@@ -95,41 +95,40 @@ export default function AppBody() {
         <div className="grid grid-cols-1 gap-4">
           <TitleText text="Contribute To Our 👽 Alien Dictionary!!🛸"></TitleText>
           <div className="flex justify-center space-x-0 min-w-full">
-            <button
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2"
-              onClick={addShare}
-            >
-              Share
-            </button>
-            {share.state ? (
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText(
-                    `http://localhost:3000/${share.id}`
-                  );
-                  alert("Link copied to clipboard!");
-                }}
-                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 flex items-center"
-              >
-                {" "}
-                Link
-                <p className="font-light text-sm ml-1">({share.id})</p>
-              </button>
-            ) : null}
-          </div>
+                    {share.state ? (
+                    <button
+                        onClick={() => {
+                        navigator.clipboard.writeText(
+                            `http://localhost:3000/${share.id}`
+                        );
+                        alert("Link copied to clipboard!");
+                        }}
+                        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 flex items-center min-w-full text-center justify-center"
+                    >
+                        <div className="flex items-center text-center">
+                        Copy Link
+                        <p className="font-light text-sm ml-1 ">({share.id})</p>
+                        </div>
+                    </button>
+                    ) : <button
+                            className="bg-green-500 hover:bg-green-700 text-center text-white font-bold py-2 px-2 min-w-full"
+                            onClick={addShare}
+                        > Share
+                </button>}
+            </div>
+          <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-4">
 
-          <WordForm
-            id={editDetails.id}
-            alienWord={editDetails.alienWord}
-            earthWord={editDetails.earthWord}
-            category={editDetails.category}
-            flag={editDetails.flag}
-            editSetter={editSetter}
-          ></WordForm>
-          <h1 className="text-center text-2xl font-bold text-green-500">
-            Words List
-          </h1>
-          <WordList edit={editDetails} editSetter={editSetter}></WordList>
+            <WordForm
+                id={editDetails.id}
+                alienWord={editDetails.alienWord}
+                earthWord={editDetails.earthWord}
+                category={editDetails.category}
+                flag={editDetails.flag}
+                editSetter={editSetter}
+            ></WordForm>
+            <WordList edit={editDetails} editSetter={editSetter}></WordList>
+
+          </div>
         </div>
       </div>
     </WordsContext.Provider>

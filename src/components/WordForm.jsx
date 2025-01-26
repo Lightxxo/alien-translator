@@ -1,5 +1,6 @@
 import { useEffect, useContext, useState } from "react";
 import { WordsContext } from "../contexts/Context";
+import RandomWord from "./RandomWord";
 
 export default function WordForm({
   earthWord,
@@ -9,7 +10,7 @@ export default function WordForm({
   flag,
   editSetter,
 }) {
-  const { words, wordsDispatcher } = useContext(WordsContext);
+  const { wordsDispatcher } = useContext(WordsContext);
   const [inputs, setInputs] = useState({
     earthWord: earthWord,
     alienWord: alienWord,
@@ -83,7 +84,7 @@ export default function WordForm({
         <div className="mb-4">
           <label
             htmlFor="earthWord"
-            className="block text-gray-700 font-semibold mb-2"
+            className="block text-gray-700 text-left font-semibold mb-2"
           >
             Human Word:
           </label>
@@ -95,13 +96,13 @@ export default function WordForm({
             value={inputs["earthWord"]}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full px-4 py-2 mx-left border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
           />
         </div>
 
         <div className="mb-4">
           <div className="flex items-center gap-2">
-            <label htmlFor="alienWord" className="text-gray-700 font-semibold">
+            <label htmlFor="alienWord" className="text-gray-700 font-semibold text-left">
               Alien Word:
             </label>
             <button
@@ -122,11 +123,11 @@ export default function WordForm({
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
           ></textarea>
         </div>
-
+        
         <div className="mb-4">
           <label
             htmlFor="category"
-            className="block text-gray-700 font-semibold mb-2"
+            className="block text-gray-700 font-semibold mb-2 text-left"
           >
             Category:
           </label>
@@ -158,6 +159,8 @@ export default function WordForm({
           </button>
         </div>
       </form>
+      
+      <RandomWord></RandomWord>
     </div>
   );
 }

@@ -26,8 +26,12 @@ export default function WordList({ edit, editSetter }) {
   }
 
   return (
-    <div>
+    <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg mt-8">
+        <h1 className="text-center text-2xl font-bold text-green-500">
+            Words List
+        </h1>
       <div className="grid grid-cols-1 gap-4">
+        {words.length === 0 ? <p className=" mt-10 text-center text-xs font-light text-slate-500">Maybe add some words...</p>:<></>}
         {
         words.map((word, index) => (
           <div
@@ -78,7 +82,7 @@ export default function WordList({ edit, editSetter }) {
             </h2>
             <h3 className="text-xs text-zinc-500 text-center">Category:</h3>
             <h3 className="text-lg text-black-500">
-              {word.category} {word.id}
+              {word.category}
             </h3>
           </div>
         ))}
