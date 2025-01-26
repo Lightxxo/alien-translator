@@ -1,18 +1,8 @@
 const { Sequelize, DataTypes } = require("@sequelize/core");
+const config = require('./config');
 
-
-const sequelize = new Sequelize({
-  dialect: "postgres",
-  database: "alien",
-  user: "postgres",
-  password: "a",
-  host: "localhost",
-  port: 5432,
-  ssl: false,
-  clientMinMessages: "notice",
-});
-
-
+const sequelize = new Sequelize(config);
+  
 const Link = sequelize.define(
     "Link",
     {
